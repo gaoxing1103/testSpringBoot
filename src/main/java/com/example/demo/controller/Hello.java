@@ -11,7 +11,7 @@ import java.util.List;
 public class Hello {
     @RequestMapping("/hello")
     public String index(){
-        return "hello word12345678！！123";
+        return "hello word!!!";
     }
 
 }
