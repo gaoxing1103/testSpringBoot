@@ -13,5 +13,4 @@ public class Hello {
     public String index(){
         return "hello word!!!";
     }
-
 }
