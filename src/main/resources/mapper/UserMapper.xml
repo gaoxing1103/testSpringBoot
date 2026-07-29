@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+    <select id="selectAllUser" resultType="com.example.demo.entity.User">
+        select id,username,realname from t_user
+    </select>
+
+    <select id="selectUserByName" resultType="com.example.demo.entity.User">
+        select id,username,realname from t_user
+        where (username like concat('%',#{username},'%')) or (realname like concat('%',#{username},'%'))
+    </select>
+
+    <select id="getUserByUserName" resultType="com.example.demo.entity.User">
+        select id,username,realname from t_user
+        where username = #{username} limit 1
+    </select>
+
+    <!-- useGeneratedKeys 自动回填主键id -->
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_user(username, realname)
+        VALUES (#{userName}, #{realName})
+    </insert>
+
+    <delete id="deleteUserById">
+        DELETE FROM t_user WHERE id = #{id}
+    </delete>
+</mapper>
